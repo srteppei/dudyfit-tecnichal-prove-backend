@@ -11,6 +11,15 @@ export class TrainerService {
     return trainer;
   }
 
+  deleteTrainer(id: number) {
+    const index = this.trainerList.findIndex(trainer => {
+      trainer.id === id;
+    });
+    if (index !== null) {
+      this.trainerList.splice(index, 1);
+    }
+  }
+
   private dynamicId() {
     return new Date().getTime();
   }

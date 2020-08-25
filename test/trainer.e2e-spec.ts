@@ -29,4 +29,14 @@ describe('TrainerController (e2e)', () => {
         expect(body.availablePlaces).toBe(4);
       });
   });
+
+  it('Delete trainer', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/trainer')
+      .send(new Trainer(null, 'test2', 3, 5));
+
+    return request(app.getHttpServer())
+      .delete(`/trainer/${response.body.id}`)
+      .expect(200);
+  });
 });
