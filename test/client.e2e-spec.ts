@@ -38,4 +38,19 @@ describe('TrainerController (e2e)', () => {
       .delete(`/client/${response.body.id}`)
       .expect(200);
   });
+
+  it('Update cleint', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/client')
+      .send(new Client(null, 'test3', 3));
+
+    const client: Client = response.body;
+    client.name = 'test4';
+
+    return request(app.getHttpServer())
+      .put('/client')
+      .send(client)
+      .expect(200)
+      .expect(client);
+  });
 });

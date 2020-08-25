@@ -18,6 +18,15 @@ export class ClientService {
     }
   }
 
+  updateClient(client: Client) {
+    const storedClient = this.clientList.find(aux => aux.id === client.id);
+    if (storedClient != null) {
+      storedClient.name = client.name;
+      storedClient.trainerReputation = client.trainerReputation;
+    }
+    return storedClient;
+  }
+
   private dynamicId() {
     return new Date().getTime();
   }
