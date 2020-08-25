@@ -11,6 +11,13 @@ export class ClientService {
     return client;
   }
 
+  deleteClient(id: Number) {
+    const index = this.clientList.findIndex(client => client.id === id);
+    if (index != null) {
+      this.clientList.splice(index, 1);
+    }
+  }
+
   private dynamicId() {
     return new Date().getTime();
   }

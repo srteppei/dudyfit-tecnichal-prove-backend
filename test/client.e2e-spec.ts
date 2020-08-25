@@ -28,4 +28,14 @@ describe('TrainerController (e2e)', () => {
         expect(body.trainerReputation).toBe(5);
       });
   });
+
+  it('Delete client', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/client')
+      .send(new Client(null, 'test2', 3));
+
+    return request(app.getHttpServer())
+      .delete(`/client/${response.body.id}`)
+      .expect(200);
+  });
 });

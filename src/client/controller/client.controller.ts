@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Delete, Param } from '@nestjs/common';
 import { ClientService } from '../service/client.service';
 import { Client } from '../domain/client';
 
@@ -9,5 +9,10 @@ export class ClientController {
   @Post()
   createClient(@Body() clientDto: Client): Client {
     return this.clientService.createClient(clientDto);
+  }
+
+  @Delete(':id')
+  deleteClient(@Param('id') id: Number) {
+    this.clientService.deleteClient(id);
   }
 }
