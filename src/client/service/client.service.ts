@@ -27,6 +27,10 @@ export class ClientService {
     return storedClient;
   }
 
+  getAllClients() {
+    return this.clientList;
+  }
+
   private dynamicId() {
     return new Date().getTime();
   }

@@ -53,4 +53,17 @@ describe('TrainerController (e2e)', () => {
       .expect(200)
       .expect(client);
   });
+
+  it('Get all client list', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/client')
+      .send(new Client(null, 'test3', 3));
+
+    return request(app.getHttpServer())
+      .get('/client/all')
+      .expect(200)
+      .expect(response => {
+        expect(response.body.length).toBe(1);
+      });
+  });
 });

@@ -1,4 +1,12 @@
-import { Controller, Post, Body, Delete, Param, Put } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Delete,
+  Param,
+  Put,
+  Get,
+} from '@nestjs/common';
 import { ClientService } from '../service/client.service';
 import { Client } from '../domain/client';
 
@@ -19,5 +27,10 @@ export class ClientController {
   @Put()
   updateClient(@Body() clientDto: Client): Client {
     return this.clientService.updateClient(clientDto);
+  }
+
+  @Get('/all')
+  getAllClients(): Client[] {
+    return this.clientService.getAllClients();
   }
 }
