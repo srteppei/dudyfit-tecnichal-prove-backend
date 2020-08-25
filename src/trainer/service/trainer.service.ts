@@ -11,6 +11,16 @@ export class TrainerService {
     return trainer;
   }
 
+  updateTrainer(trainer: Trainer) {
+    const storedTrainer = this.trainerList.find(aux => aux.id === trainer.id);
+    if (storedTrainer !== null) {
+      storedTrainer.availablePlaces = trainer.availablePlaces;
+      storedTrainer.name = trainer.name;
+      storedTrainer.reputation = trainer.reputation;
+    }
+    return trainer;
+  }
+
   deleteTrainer(id: number) {
     const index = this.trainerList.findIndex(trainer => {
       trainer.id === id;

@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Delete, Param } from '@nestjs/common';
+import { Controller, Post, Body, Delete, Param, Put } from '@nestjs/common';
 import { Trainer } from '../domain/trainer';
 import { TrainerService } from '../service/trainer.service';
 
@@ -9,6 +9,11 @@ export class TrainerController {
   @Post()
   createTrainer(@Body() trainerDto: Trainer): Trainer {
     return this.trainerService.createTrainer(trainerDto);
+  }
+
+  @Put()
+  updateTrainer(@Body() trainerDto: Trainer): Trainer {
+    return this.trainerService.updateTrainer(trainerDto);
   }
 
   @Delete(':id')
