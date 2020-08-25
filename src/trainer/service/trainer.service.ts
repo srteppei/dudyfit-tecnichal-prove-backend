@@ -5,6 +5,10 @@ import { Trainer } from '../domain/trainer';
 export class TrainerService {
   private trainerList: Trainer[] = [];
 
+  getAllTrainer() {
+    return this.trainerList;
+  }
+
   createTrainer(trainer: Trainer) {
     trainer.id = this.dynamicId();
     this.trainerList.push(trainer);
