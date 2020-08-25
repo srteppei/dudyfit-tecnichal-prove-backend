@@ -5,5 +5,6 @@ import { TrainerService } from './service/trainer.service';
 @Module({
   controllers: [TrainerController],
   providers: [TrainerService],
+  exports: [TrainerService],
 })
 export class TrainerModule {}
