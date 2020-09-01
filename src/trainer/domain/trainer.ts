@@ -1,6 +1,6 @@
 export class Trainer {
   constructor(
-    public id: number,
+    public id: Number,
     public name: String,
     public reputation: number,
     public availablePlaces: number,
